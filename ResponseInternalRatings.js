@@ -65,9 +65,9 @@ public class ResponseInternalRatings {
     public ResponseInternalRatings() {}
 
     // Constructor that takes a List<Sensitivity>
-    public ResponseInternalRatings(List<Sensitivity> sensitivityList) {
-        this.sensitivityList = sensitivityList;
-    }
+    // public ResponseInternalRatings(List<Sensitivity> sensitivityList) {
+    //     this.sensitivityList = sensitivityList;
+    // }
 
     public List<Sensitivity> getSensitivityList() {
         return sensitivityList;
