@@ -56,14 +56,18 @@
 package com.socgen.dbe.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResponseInternalRatings {
-    @JsonProperty("sensitivityList")
-    private List<Sensitivity> sensitivityList = new ArrayList<>();
+    private List<Sensitivity> sensitivityList;
+
+    public ResponseInternalRatings() {}
+
+    // Constructor that takes a List<Sensitivity>
+    public ResponseInternalRatings(List<Sensitivity> sensitivityList) {
+        this.sensitivityList = sensitivityList;
+    }
 
     public List<Sensitivity> getSensitivityList() {
         return sensitivityList;
@@ -75,8 +79,6 @@ public class ResponseInternalRatings {
 
     @Override
     public String toString() {
-        return "ResponseInternalRatings{" +
-               "sensitivityList=" + sensitivityList +
-               '}';
+        return "ResponseInternalRatings{" + sensitivityList + '}';
     }
 }
