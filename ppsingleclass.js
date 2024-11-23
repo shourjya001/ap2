@@ -52,10 +52,11 @@ public class SaveInternalRatingApi {
                                     public void setValues(PreparedStatement ps, int i) throws SQLException {
                                         Sensitivity sensitivity = batch.get(i);
                                         ps.setString(1, sensitivity.getBdrId());
-                                        ps.setString(2, sensitivity.getSensitivityRank());
-                                        ps.setString(3, sensitivity.getSensitivityRankName());
+                                        
                                         ps.setString(4, sensitivity.getCellRiskId());
                                         ps.setString(5, sensitivity.getCellRiskName());
+                                        ps.setString(2, sensitivity.getSensitivityRank());
+                                        ps.setString(3, sensitivity.getSensitivityRankName());
                                         ps.setString(6, sensitivity.getRatingSystemFacilityPurposeId());
                                         ps.setString(7, sensitivity.getRatingSystemFacilityPurposeName());
                                     }
