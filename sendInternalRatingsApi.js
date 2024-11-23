@@ -66,15 +66,22 @@ public ResponseInternalRatings sendInternalRatingsApi() throws IOException, Json
     int status = result.getStatusCode().value();
 
     if (status == 200) {
-        ObjectMapper mapperObj = new ObjectMapper();
-
-        System.out.println("response json---->" + (String) result.getBody());
-
-        // Map the decompressed JSON array to a ResponseInternalRatings object
-        responseObject = mapperObj.readValue(decompressedJson, ResponseInternalRatings.class);
-
+    ObjectMapper mapperObj = new ObjectMapper();
+    try {
+        // First deserialize to List<Sensitivity>
+        List<Sensitivity> sensitivities = mapperObj.readValue(
+            decompressedJson, 
+            new TypeReference<List<Sensitivity>>() {}
+        );
+        
+        // Create ResponseInternalRatings with the list
+        responseObject = new ResponseInternalRatings(sensitivities);
+        
         System.out.println("responseObject---->" + responseObject);
+    } catch (Exception e) {
+        System.err.println("Error deserializing response: " + e.getMessage());
+        e.printStackTrace();
     }
-
+    }
     return responseObject;
 }
