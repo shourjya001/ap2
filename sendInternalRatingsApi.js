@@ -74,8 +74,9 @@ public ResponseInternalRatings sendInternalRatingsApi() throws IOException, Json
             new TypeReference<List<Sensitivity>>() {}
         );
         
-        // Create ResponseInternalRatings with the list
-        responseObject = new ResponseInternalRatings(sensitivities);
+        // Create ResponseInternalRatings and set the list
+        responseObject = new ResponseInternalRatings();
+        responseObject.setSensitivityList(sensitivities);
         
         System.out.println("responseObject---->" + responseObject);
     } catch (Exception e) {
